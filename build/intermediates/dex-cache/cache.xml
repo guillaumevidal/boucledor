@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\dev\BoucleDor\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="C:\dev\BoucleDor\app\build\intermediates\pre-dexed\debug\classes-a8a2ceb11fdbdd1cffb4517e566d026af3820bf7.jar" />
+    </item>
+    <item
+        jar="C:\dev\BoucleDor\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="C:\dev\BoucleDor\app\build\intermediates\pre-dexed\debug\classes-e9da146a0ea01fa257b11512b0f2b01f79ec1af9.jar" />
+    </item>
+    <item
+        jar="C:\dev\BoucleDor\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="C:\dev\BoucleDor\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-55d426546bf400ff1a7860ad8dc36f345a4a2a4f.jar" />
+    </item>
+    <item
+        jar="C:\Users\Eva\.gradle\caches\modules-2\files-2.1\joda-time\joda-time\2.3\56498efd17752898cfcc3868c1b6211a07b12b8f\joda-time-2.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="56498efd17752898cfcc3868c1b6211a07b12b8f">
+        <dex dex="C:\dev\BoucleDor\app\build\intermediates\pre-dexed\debug\joda-time-2.3-d1ff5d4b794db037072d79bd1907c4b5fd2742c9.jar" />
+    </item>
+    <item
+        jar="C:\Users\Eva\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="C:\dev\BoucleDor\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-66c8174f0b540c361e099e462498c0c75d252289.jar" />
+    </item>
+
+</items>
