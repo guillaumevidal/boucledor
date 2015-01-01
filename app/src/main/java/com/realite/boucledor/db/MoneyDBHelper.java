@@ -128,6 +128,7 @@ public class MoneyDBHelper extends SQLiteOpenHelper {
 		Date date = new Date(cursor.getInt(cursor.getColumnIndex(DATE_COL)));
 		Double rawAmt = cursor.getDouble(cursor.getColumnIndex(RAW_AMT_COL));
 		return new InputEntry.Builder(date, rawAmt)
+                .id(cursor.getInt(cursor.getColumnIndex(INPUT_ID_COL)))
 				.afterRetroAmt(cursor.getDouble(cursor.getColumnIndex(AFTER_RETRO_AMT_COL)))
 				.retroAmt(cursor.getDouble(cursor.getColumnIndex(RETRO_AMT_COL)))
 				.retroPercent(cursor.getDouble(cursor.getColumnIndex(RETRO_PERCENT_COL)))

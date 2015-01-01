@@ -16,7 +16,9 @@ import com.realite.boucledor.db.MoneyDBHelper;
 import org.joda.time.LocalDate;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class EntryListActivity extends Activity implements SwipeDismissRecyclerViewTouchListener.DismissCallbacks {
 
@@ -54,8 +56,12 @@ public class EntryListActivity extends Activity implements SwipeDismissRecyclerV
 
     @Override
     public void onDismiss(RecyclerView recyclerView, int[] reverseSortedPositions) {
+        Set<Integer> toRemove = new HashSet<>();
         for (int position : reverseSortedPositions) {
-            entryListAdapter.removeFromSwipe(position);
+            toRemove.add(entryListAdapter.removeFromSwipe(position));
+        }
+        for (Integer id : toRemove) {
+            dbHelper.deleteEntry(id);
         }
     }
 }

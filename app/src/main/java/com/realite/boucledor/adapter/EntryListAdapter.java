@@ -21,6 +21,7 @@ public class EntryListAdapter extends RecyclerView.Adapter<EntryListAdapter.View
     private final LayoutInflater layoutInflater;
     private List<InputEntry> entryList = new ArrayList<>();
     private final Context context;
+    private static final String EURO = " €";
 
     public EntryListAdapter(Context context, List<InputEntry> defaultEntries) {
         layoutInflater = (LayoutInflater) context
@@ -37,13 +38,14 @@ public class EntryListAdapter extends RecyclerView.Adapter<EntryListAdapter.View
     }
 
     @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         InputEntry entry = entryList.get(position);
-        holder.rawAmtText.setText(entry.getRawAmt() + "€");
-        holder.netAmtText.setText(entry.getNetAmt() + "€");
+        holder.idText.setText(String.valueOf(entry.getId()));
+        holder.rawAmtText.setText(entry.getRawAmt() + EURO);
+        holder.netAmtText.setText(entry.getNetAmt() + EURO);
         holder.typeText.setText(entry.getType());
         holder.itemDateText.setText(DateUtil.formatDateTimeForDisplay
-                    (context, entry.getInputDate().toString()));
+                (context, entry.getInputDate().toString()));
     }
 
     @Override
@@ -61,9 +63,11 @@ public class EntryListAdapter extends RecyclerView.Adapter<EntryListAdapter.View
         public TextView rawAmtText;
         public TextView netAmtText;
         public TextView typeText;
+        public TextView idText;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            this.idText = (TextView) itemView.findViewById(R.id.entryidHidden);
             this.itemDateText = (TextView) itemView.findViewById(R.id.entryDateView);
             this.rawAmtText = (TextView) itemView.findViewById(R.id.entryRawAmtView);
             this.netAmtText = (TextView) itemView.findViewById(R.id.entryNetAmtView);
@@ -71,9 +75,11 @@ public class EntryListAdapter extends RecyclerView.Adapter<EntryListAdapter.View
         }
     }
 
-    public void removeFromSwipe(int position) {
+    public int removeFromSwipe(int position) {
+        int removedId = entryList.get(position).getId();
         entryList.remove(position);
         notifyDataSetChanged();
+        return removedId;
     }
 
 }
