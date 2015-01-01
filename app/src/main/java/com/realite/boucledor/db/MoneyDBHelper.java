@@ -1,6 +1,7 @@
 package com.realite.boucledor.db;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -60,6 +61,10 @@ public class MoneyDBHelper extends SQLiteOpenHelper {
 			+ TYPE_COL + " FROM " + INPUT;
 
 	private static final String WHERE_DATE_RANGE = " WHERE "+ DATE_COL + " BETWEEN ? AND ?";
+	private static final String DELETE = " DELETE FROM "+ INPUT + " ";
+    private static final String DELETE_ID_CONDITION = " WHERE "+ INPUT_ID_COL + " == ?";
+
+
 	private final Context context;
 
 	public MoneyDBHelper(Context context) {
@@ -131,5 +136,11 @@ public class MoneyDBHelper extends SQLiteOpenHelper {
 				.netAmt(cursor.getDouble(cursor.getColumnIndex(NET_AMT_COL)))
 				.type(cursor.getString(cursor.getColumnIndex(TYPE_COL))).build();
 	}
+
+    public void deleteEntry(int id){
+        Integer[] args = new Integer[1];
+        args[0] = id;
+        getWritableDatabase().execSQL(DELETE + DELETE_ID_CONDITION, args);
+    }
 
 }
