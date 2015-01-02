@@ -18,10 +18,8 @@ import com.realite.boucledor.ui.DisplayHandler;
 
 public class MainActivity extends Activity {
 
-
 	private MoneyDBHelper dbHelper;
 	private DisplayHandler displayHandler;
-
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -36,10 +34,8 @@ public class MainActivity extends Activity {
 	}
 
 	private void addListeners() {
-		final Button encaisserBtn = (Button) findViewById(R.id.encaisserBtn);
-		final EditText encaisserAmtInput = (EditText) findViewById(R.id.encaisserAmtInput);
-		final RadioGroup typeRdGroup = (RadioGroup) findViewById(R.id.typeRdGroup);
-		encaisserBtn.setOnClickListener(new AddInputListener(dbHelper, displayHandler, encaisserAmtInput, typeRdGroup));
+        final Button encaisserBtn = (Button) findViewById(R.id.encaisserBtn);
+		encaisserBtn.setOnClickListener(new AddInputListener(this, dbHelper, displayHandler));
 	}
 
 	@Override

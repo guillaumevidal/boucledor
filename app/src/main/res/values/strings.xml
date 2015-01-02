@@ -3,4 +3,11 @@
     <string name="app_name">BoucleDor</string>
     <string name="setting_action">Parametres</string>
     <string name="calendar_action">Par Date</string>
+    <string name="pref_file">com.realite.boucledor.SETTINGS</string>
+    <integer name="default_retro_percent_dom">20</integer>
+    <string name="set_retro_percent_dom_prop"/>
+    <integer name="default_retro_percent_cab">25</integer>
+    <string name="set_retro_percent_cab_prop"/>
+    <integer name="default_tax_percent">50</integer>
+    <string name="set_tax_percent_prop"/>
 </resources>
