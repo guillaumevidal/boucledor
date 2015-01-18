@@ -2,10 +2,10 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/action_settings"
-          android:icon="@drawable/ic_action_settings"
-          android:showAsAction="ifRoom"
-          android:title="@string/setting_action"/>
+    <item android:id="@+id/main_action"
+        android:icon="@drawable/ic_action_new"
+        android:showAsAction="ifRoom"
+        android:title="@string/main_action" />
     <item android:id="@+id/action_calendar"
           android:icon="@drawable/ic_action_action_today"
           android:showAsAction="ifRoom"
