@@ -9,6 +9,10 @@ import java.util.TimeZone;
 
 public class DateUtil {
 
+    private DateUtil() {
+        //private hidden constructor
+    }
+
     private static final SimpleDateFormat DB_FORMAT = new SimpleDateFormat(
             "yyyy-MM-dd HH:mm:ss");
     private static final SimpleDateFormat DISPLAY_FORMAT = new SimpleDateFormat(

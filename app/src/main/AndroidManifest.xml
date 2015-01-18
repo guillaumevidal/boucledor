@@ -15,5 +15,7 @@
         </activity>
         <activity android:name="com.realite.boucledor.activities.EntryListActivity"
                   android:label="@string/calendar_action"/>
+        <activity android:name="com.realite.boucledor.activities.SettingsActivity"
+            android:label="@string/setting_action"/>
     </application>
 </manifest>

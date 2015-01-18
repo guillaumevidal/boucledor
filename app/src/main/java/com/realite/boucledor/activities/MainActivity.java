@@ -25,15 +25,19 @@ public class MainActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		final TextView currentAmt = (TextView) findViewById(R.id.currentAmtText);
-		dbHelper = new MoneyDBHelper(getApplicationContext());
-		dbHelper.wipe();
-		displayHandler = new DisplayHandler(currentAmt);
-		displayHandler.addAllAndRefresh(dbHelper);
-		addListeners();
+        loadState();
 	}
 
-	private void addListeners() {
+    private void loadState() {
+        final TextView currentAmt = (TextView) findViewById(R.id.currentAmtText);
+        dbHelper = new MoneyDBHelper(getApplicationContext());
+        dbHelper.wipe();
+        displayHandler = new DisplayHandler(currentAmt);
+        displayHandler.addAllAndRefresh(dbHelper);
+        addListeners();
+    }
+
+    private void addListeners() {
         final Button encaisserBtn = (Button) findViewById(R.id.encaisserBtn);
 		encaisserBtn.setOnClickListener(new AddInputListener(this, dbHelper, displayHandler));
 	}
@@ -55,12 +59,21 @@ public class MainActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_calendar:
-                Intent intent = new Intent(this, EntryListActivity.class);
-                startActivity(intent);
+                Intent calIntent = new Intent(this, EntryListActivity.class);
+                startActivity(calIntent);
+                return true;
+            case R.id.action_settings:
+                Intent settingsIntent = new Intent(this, SettingsActivity.class);
+                startActivity(settingsIntent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        loadState();
+    }
 }

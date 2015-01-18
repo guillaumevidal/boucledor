@@ -5,9 +5,9 @@
     <string name="calendar_action">Par Date</string>
     <string name="pref_file">com.realite.boucledor.SETTINGS</string>
     <integer name="default_retro_percent_dom">20</integer>
-    <string name="set_retro_percent_dom_prop"/>
+    <string name="set_retro_percent_dom_prop">RETRO_DOM_PROP</string>
     <integer name="default_retro_percent_cab">25</integer>
-    <string name="set_retro_percent_cab_prop"/>
+    <string name="set_retro_percent_cab_prop">RETRO_CAB_PRO</string>
     <integer name="default_tax_percent">50</integer>
-    <string name="set_tax_percent_prop"/>
+    <string name="set_tax_percent_prop">TAX_PROP</string>
 </resources>

@@ -11,6 +11,7 @@ import com.realite.boucledor.R;
 import com.realite.boucledor.business.InputEntry;
 import com.realite.boucledor.db.MoneyDBHelper;
 import com.realite.boucledor.ui.DisplayHandler;
+import com.realite.boucledor.util.PreferenceHandler;
 
 import java.util.Date;
 
@@ -44,20 +45,10 @@ public class AddInputListener implements View.OnClickListener {
     }
 
     private void recoverPreferences(Activity context) {
-        int defaultRetroDom = context.getResources().getInteger(R.integer.default_retro_percent_dom);
-        int defaultRetroCab = context.getResources().getInteger(R.integer.default_retro_percent_cab);
-        int defaultTax = context.getResources().getInteger(R.integer.default_tax_percent);
-        SharedPreferences preferences = context.getSharedPreferences(context.getString(R.string.pref_file), Context.MODE_PRIVATE);
-        if (null != preferences) {
-            domicileRetroPercent = preferences.getInt(context.getString(R.string.set_retro_percent_dom_prop), defaultRetroDom);
-            cabinetRetroPercent = preferences.getInt(context.getString(R.string.set_retro_percent_cab_prop), defaultRetroCab);
-            taxPercent = preferences.getInt(context.getString(R.string.set_tax_percent_prop), defaultTax);
-        } else {
-            Log.e(LOG_TAG, "Can't fetch preferences, using defaults");
-            domicileRetroPercent = defaultRetroDom;
-            cabinetRetroPercent = defaultRetroCab;
-            taxPercent = defaultTax;
-        }
+        PreferenceHandler preferenceHandler = new PreferenceHandler(context);
+        domicileRetroPercent = preferenceHandler.getDomRetro();
+        cabinetRetroPercent = preferenceHandler.getCabRetro();
+        taxPercent = preferenceHandler.getTax();
     }
 
     @Override
