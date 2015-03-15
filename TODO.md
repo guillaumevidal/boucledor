@@ -1,5 +1,5 @@
-*Use fragments for navigation rather than activities
-*Change icon
-*Add month picker in entry list
-*Externalize strings
-*Handle currency
+ * Externalize strings
+ * Handle currency
+ * Make date picker month picker
+ * Make month picker functional
+ * Display current month in button
