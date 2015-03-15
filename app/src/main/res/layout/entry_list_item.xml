@@ -34,6 +34,7 @@
             android:textColor="@android:color/holo_blue_light"
         android:text="rawAmt">
     </TextView>
+
     <TextView
             android:id="@+id/entryTypeView"
             android:layout_width="wrap_content"
@@ -44,12 +45,36 @@
             android:paddingLeft="5dp"
             android:textColor="@android:color/holo_blue_light"
         android:text="Type"/>
+
+    <TextView
+        android:id="@+id/entrySessionsNb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/entryNetAmtView"
+        android:layout_toRightOf="@+id/entryTypeView"
+        android:textSize="12sp"
+        android:paddingLeft="5dp"
+        android:textColor="@android:color/holo_blue_light"
+        android:text="NB"
+        android:numeric="integer" />
+
+    <TextView
+        android:id="@+id/entrySessionsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/entryNetAmtView"
+        android:layout_toRightOf="@+id/entrySessionsNb"
+        android:textSize="12sp"
+        android:paddingLeft="5dp"
+        android:textColor="@android:color/holo_blue_light"
+        android:text=" Seances" />
+
     <TextView
         android:id="@+id/entryidHidden"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/entryNetAmtView"
-        android:layout_toRightOf="@+id/entryRawAmtView"
+        android:layout_toRightOf="@+id/entrySessionsText"
         android:textSize="12sp"
         android:paddingLeft="5dp"
         android:textColor="@android:color/holo_blue_light"

@@ -15,6 +15,7 @@ public class InputEntry implements Comparable<InputEntry>{
 	private Double taxAmt;
 	private Double netAmt;
 	private String type;
+	private int sessions;
 
 	public InputEntry(Builder builder) {
 		this.id = builder.id;
@@ -27,6 +28,7 @@ public class InputEntry implements Comparable<InputEntry>{
 		this.taxAmt = builder.taxAmt;
 		this.netAmt = builder.netAmt;
 		this.type = builder.type;
+        this.sessions = builder.sessions;
 	}
 
 	@Override
@@ -46,6 +48,7 @@ public class InputEntry implements Comparable<InputEntry>{
 		private Double taxAmt;
 		private Double netAmt;
 		private String type;
+        private int sessions;
 
 		public Builder(Date inputDate, Double rawAmt) {
 			this.inputDate = inputDate;
@@ -92,6 +95,11 @@ public class InputEntry implements Comparable<InputEntry>{
 			return this;
 		}
 
+        public Builder sessions(int sessions) {
+            this.sessions = sessions;
+            return this;
+        }
+
 		public InputEntry build() {
 			return new InputEntry(this);
 		}
@@ -136,6 +144,10 @@ public class InputEntry implements Comparable<InputEntry>{
 	public String getType() {
 		return type;
 	}
+
+    public int getSessions() {
+        return sessions;
+    }
 
 	@Override
 	public String toString() {

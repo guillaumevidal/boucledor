@@ -1,6 +1,7 @@
 package com.realite.boucledor.activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,10 +10,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.realite.boucledor.R;
 import com.realite.boucledor.adapter.EntryListAdapter;
 import com.realite.boucledor.util.PreferenceHandler;
+
+import static android.widget.Toast.*;
 
 public class SettingsActivity extends Activity {
 
@@ -37,6 +41,12 @@ public class SettingsActivity extends Activity {
                 preferenceHandler.setNewSettings(Integer.valueOf(retroCabEdit.getText().toString()),
                 Integer.valueOf(retroDomEdit.getText().toString()),
                 Integer.valueOf(taxEdit.getText().toString()));
+                Context context = getApplicationContext();
+                CharSequence text = "Parametres sauvés";
+                int duration = LENGTH_SHORT;
+
+                Toast toast = makeText(context, text, duration);
+                toast.show();
             }
         });
     }

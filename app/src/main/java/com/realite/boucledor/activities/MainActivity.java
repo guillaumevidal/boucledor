@@ -31,7 +31,7 @@ public class MainActivity extends Activity {
     private void loadState() {
         final TextView currentAmt = (TextView) findViewById(R.id.currentAmtText);
         dbHelper = new MoneyDBHelper(getApplicationContext());
-        dbHelper.wipe();
+        //dbHelper.wipe();
         displayHandler = new DisplayHandler(currentAmt);
         displayHandler.addAllAndRefresh(dbHelper);
         addListeners();

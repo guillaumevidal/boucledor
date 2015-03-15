@@ -21,6 +21,7 @@ public class AddInputListener implements View.OnClickListener {
     private static final String DOMICILE = "Domicile";
     private double domicileRetroPercent;
     private static final String CABINET = "Cabinet";
+    private static final int  NOT_SUBJECT_TO_RETRO = 4;
     private double cabinetRetroPercent;
     private double taxPercent;
 
@@ -29,12 +30,14 @@ public class AddInputListener implements View.OnClickListener {
     private double taxPercentage;
     private RadioGroup typeRdGroup;
 
-    private  EditText inputEdit;
+    private EditText inputEdit;
+    private EditText sessionsEdit;
     private DisplayHandler dHandler;
     private MoneyDBHelper dbHelper;
 
     public AddInputListener(Activity context, MoneyDBHelper dbHelper, DisplayHandler dHandler) {
         this.inputEdit = (EditText) context.findViewById(R.id.encaisserAmtInput);
+        this.sessionsEdit = (EditText) context.findViewById(R.id.sessionsEdit);
         this.typeRdGroup = (RadioGroup) context.findViewById(R.id.typeRdGroup);
         this.dHandler = dHandler;
         this.dbHelper = dbHelper;
@@ -55,8 +58,13 @@ public class AddInputListener implements View.OnClickListener {
     public void onClick(View v) {
         try {
             Double amt = Double.parseDouble(inputEdit.getText().toString());
+            int sessions = Integer.parseInt(sessionsEdit.getText().toString());
+            Double amtForRetro = amt;
+            if (getType().equals(DOMICILE)) {
+                amtForRetro -= NOT_SUBJECT_TO_RETRO * sessions;
+            }
+            Double retroAmt = amtForRetro * retroPercentage;
             Double afterRetro;
-            Double retroAmt = amt * retroPercentage;
             afterRetro = amt - retroAmt;
             Double taxAmt = afterRetro * taxPercentage;
             Double afterTax = afterRetro - taxAmt;
@@ -64,10 +72,12 @@ public class AddInputListener implements View.OnClickListener {
                     .afterRetroAmt(afterRetro).netAmt(afterTax)
                     .retroAmt(retroAmt).retroPercent(getRetroPercent())
                     .taxAmt(taxAmt).taxPercent(taxPercent)
-                    .type(getType());
+                    .type(getType())
+                    .sessions(sessions);
             dbHelper.addInput(entryBuilder.build());
             dHandler.addAllAndRefresh(dbHelper);
             inputEdit.setText("");
+            sessionsEdit.setText("");
         } catch (NumberFormatException e) {
             Log.e(LOG_TAG, "Montant incorrect",  e);
         }

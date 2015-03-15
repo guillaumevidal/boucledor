@@ -48,6 +48,29 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
         </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seances"
+                android:id="@+id/nbSeancTxt"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/sessionsEdit"
+                android:layout_column="4"
+                android:editable="true"
+                android:numeric="integer" />
+        </TableRow>
+
         <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent" android:layout_gravity="center">
@@ -67,6 +90,7 @@
                         android:id="@+id/domRd" android:layout_gravity="right"/>
             </RadioGroup>
         </TableRow>
+
         <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
@@ -77,6 +101,8 @@
                     android:text="OK"
                     android:id="@+id/encaisserBtn" android:layout_column="4"/>
         </TableRow>
+
     </TableLayout>
+
 </LinearLayout>
 

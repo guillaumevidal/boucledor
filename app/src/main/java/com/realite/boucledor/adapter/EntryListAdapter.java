@@ -46,6 +46,7 @@ public class EntryListAdapter extends RecyclerView.Adapter<EntryListAdapter.View
         holder.typeText.setText(entry.getType());
         holder.itemDateText.setText(DateUtil.formatDateTimeForDisplay
                 (context, entry.getInputDate().toString()));
+        holder.sessionsText.setText(String.valueOf(entry.getSessions()));
     }
 
     @Override
@@ -64,6 +65,7 @@ public class EntryListAdapter extends RecyclerView.Adapter<EntryListAdapter.View
         public TextView netAmtText;
         public TextView typeText;
         public TextView idText;
+        public TextView sessionsText;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -72,6 +74,7 @@ public class EntryListAdapter extends RecyclerView.Adapter<EntryListAdapter.View
             this.rawAmtText = (TextView) itemView.findViewById(R.id.entryRawAmtView);
             this.netAmtText = (TextView) itemView.findViewById(R.id.entryNetAmtView);
             this.typeText = (TextView) itemView.findViewById(R.id.entryTypeView);
+            this.sessionsText = (TextView) itemView.findViewById(R.id.entrySessionsNb);
         }
     }
 

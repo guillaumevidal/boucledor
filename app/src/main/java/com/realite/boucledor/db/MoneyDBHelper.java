@@ -20,7 +20,7 @@ public class MoneyDBHelper extends SQLiteOpenHelper {
 
 	private static final String LOG_TAG = "DB_HELPER";
 
-	private static final int DATABASE_VERSION = 10;
+	private static final int DATABASE_VERSION = 11;
 	private static final String DB_NAME = "EvaMoneyDB";
 	private static final String INPUT = "input";
 	private static final String INPUT_ID_COL = "INPUT_ID";
@@ -33,6 +33,7 @@ public class MoneyDBHelper extends SQLiteOpenHelper {
 	private static final String TAX_PERCENT_COL = "TAX_PERCENT_AMT";
 	private static final String NET_AMT_COL = "NET_AMT";
 	private static final String TYPE_COL = "TYPE";
+	private static final String NB_SESSIONS = "NB_SESSIONS";
 
 	private static final String INPUT_CREATE_QUERY =
 			"CREATE TABLE " + INPUT + " (" +
@@ -45,7 +46,8 @@ public class MoneyDBHelper extends SQLiteOpenHelper {
 					TAX_AMT_COL + " NUMERIC, " +
 					TAX_PERCENT_COL + " NUMERIC, " +
 					NET_AMT_COL + " NUMERIC, " +
-					TYPE_COL + " NUMERIC);";
+					TYPE_COL + " NUMERIC, " +
+                    NB_SESSIONS + " NUMERIC);";
 
 	private static final String INPUT_DELETE_QUERY = "DROP TABLE " + INPUT;
 	private static final String SELECT_QUERY = "SELECT "
@@ -58,6 +60,7 @@ public class MoneyDBHelper extends SQLiteOpenHelper {
 			+ TAX_AMT_COL + ", "
 			+ TAX_PERCENT_COL + ", "
 			+ NET_AMT_COL + ", "
+			+ NB_SESSIONS + ", "
 			+ TYPE_COL + " FROM " + INPUT;
 
 	private static final String WHERE_DATE_RANGE = " WHERE "+ DATE_COL + " BETWEEN ? AND ?";
@@ -114,6 +117,7 @@ public class MoneyDBHelper extends SQLiteOpenHelper {
 			values.put(TAX_PERCENT_COL, entry.getTaxPercent());
 			values.put(NET_AMT_COL, entry.getNetAmt());
 			values.put(TYPE_COL, entry.getType());
+			values.put(NB_SESSIONS, entry.getSessions());
 			getWritableDatabase().insert(INPUT, null, values);
 		} catch (Exception e) {
             Log.e(LOG_TAG, "Error inserting entry " + entry, e);
@@ -135,7 +139,9 @@ public class MoneyDBHelper extends SQLiteOpenHelper {
 				.taxAmt(cursor.getDouble(cursor.getColumnIndex(TAX_AMT_COL)))
 				.taxPercent(cursor.getDouble(cursor.getColumnIndex(TAX_PERCENT_COL)))
 				.netAmt(cursor.getDouble(cursor.getColumnIndex(NET_AMT_COL)))
-				.type(cursor.getString(cursor.getColumnIndex(TYPE_COL))).build();
+				.type(cursor.getString(cursor.getColumnIndex(TYPE_COL)))
+                .sessions(cursor.getInt(cursor.getColumnIndex(NB_SESSIONS)))
+                .build();
 	}
 
     public void deleteEntry(int id){
