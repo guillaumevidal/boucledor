@@ -1,6 +1,8 @@
 package com.realite.boucledor.activities;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -9,6 +11,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
 import com.malinskiy.superrecyclerview.SwipeDismissRecyclerViewTouchListener;
@@ -16,6 +20,7 @@ import com.realite.boucledor.R;
 import com.realite.boucledor.adapter.EntryListAdapter;
 import com.realite.boucledor.business.InputEntry;
 import com.realite.boucledor.db.MoneyDBHelper;
+import com.realite.boucledor.fragment.MonthPickerFragment;
 
 import org.joda.time.LocalDate;
 
@@ -34,6 +39,15 @@ public class EntryListActivity extends Activity implements SwipeDismissRecyclerV
         super.onCreate(savedInstanceState);
         dbHelper = new MoneyDBHelper(getApplicationContext());
         setContentView(R.layout.history);
+        Button datePickBtn = (Button) findViewById(R.id.datePickBtn);
+        datePickBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fMgr = getFragmentManager();
+                MonthPickerFragment monthPicker = new MonthPickerFragment();
+                monthPicker.show(fMgr, "historyDatePick");
+            }
+        });
         SuperRecyclerView entryList = (SuperRecyclerView) findViewById(R.id.recyclerList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         entryList.setLayoutManager(layoutManager);
